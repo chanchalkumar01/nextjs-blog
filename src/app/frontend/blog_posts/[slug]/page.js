@@ -12,8 +12,9 @@ export async function generateMetadata({ params }) {
             cache: 'no-store',
             headers: { 'Content-Type': 'application/json' }
         });
-
+        console.log(apiUrl);
         if (!response.ok) {
+
             console.error('API Error:', response.status);
             return { title: "Blog Post" };
         }
@@ -46,6 +47,7 @@ export default async function BlogPostView({ params }) {
             headers: { 'Content-Type': 'application/json' }
         });
 
+        console.log('2nd : ',apiUrl);
         if (!response.ok) {
             console.error('API Response not OK:', response.status);
             notFound();
