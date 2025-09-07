@@ -1,5 +1,3 @@
-import styles from "@/app/style/page.module.css";
-import NavbarComponent from "@/app/component/navbar/navbarComponent";
 
 export default function About() {
     return <>
