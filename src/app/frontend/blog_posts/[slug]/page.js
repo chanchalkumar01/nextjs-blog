@@ -12,7 +12,7 @@ export async function generateMetadata({ params }) {
         });
 
         if (!response.ok) {
-            throw new Error('Failed to fetch blog data');
+            new Error('Failed to fetch blog data');
         }
 
         const blogData = await response.json();
