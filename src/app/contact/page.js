@@ -10,7 +10,7 @@ export default function Contact() {
                 <h1>Contact Us</h1>
                 <hr/>
                 <div>
-                    "Contact content" refers to the specific text and elements on a website's or digital document's
+                    Contact content refers to the specific text and elements on a websites or digital documents
                     contact page, including contact forms, email addresses, phone numbers, postal addresses, social
                     media links, and calls to action. The goal is to make it easy for visitors to find and use the
                     appropriate channel to get in touch with the organization or individual.

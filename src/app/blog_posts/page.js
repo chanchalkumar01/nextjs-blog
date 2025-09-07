@@ -1,6 +1,5 @@
 import styles from "../style/page.module.css";
 import Link from "next/link";
-import Image from "next/image";
 import Navbar from "@/app/component/navbar/navbar";
 import blogData from '../../../data/blogs.json'
 
@@ -15,7 +14,7 @@ export default function BlogPage() {
                 <div className={styles.Blogs}>
 
                     {blogData.posts.map((post) => (
-                        <Link href={`blog_posts/${post.slug}`} key={post.id}>
+                        <Link href={`/blog_posts/${post.slug}`} key={post.id}>
                             <div className={styles.BlogsItem}>
                                 <div className={styles.BlogsTitle}>
                                     <h3>{post.id}. {post.title} ?</h3>
@@ -85,29 +84,7 @@ export default function BlogPage() {
                             program flow.
                         </div>
                     </div>
-                    <div className={styles.BlogsItem}>
-                        <div className={styles.BlogsTitle}>
-                            <h3>4. How to learn Flutter?</h3>
-                        </div>
-                        <div className={styles.BlogsDescription}>
-                            Learning Flutter involves understanding both the Dart programming language and the Flutter
-                            framework itself. A structured approach can facilitate effective learning:
-                            Learn Dart Fundamentals:
-                            Begin by understanding the basics of Dart, including variables, data types, control flow,
-                            functions, and object-oriented programming concepts.
-                            Utilize resources like the official Dart language tour and codelabs on dart.dev.
-                            Install Flutter and Set Up Your Environment:
-                            Follow the installation instructions on flutter.dev/get-started/install to set up the
-                            Flutter SDK and necessary tools like an IDE (e.g., VS Code or Android Studio).
-                            Understand Flutter Widgets:
-                            Grasp the core concept of "everything is a widget" in Flutter.
-                            Learn about different types of widgets, particularly stateless and stateful widgets, and how
-                            to use them to build user interfaces.
-                            Explore common widgets like Scaffold, Text, Image, Column, Row, and ListView.
-                            Practice Building UI and Layouts:
 
-                        </div>
-                    </div>
                 </div>
             </main>
 

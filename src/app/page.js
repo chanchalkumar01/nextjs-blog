@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styles from "./style/page.module.css";
 import Navbar from "@/app/component/navbar/navbar";
 import Home from "@/app/component/home/home";
