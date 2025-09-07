@@ -1,10 +1,10 @@
-import { notFound } from "next/navigation";
+import {notFound} from "next/navigation";
 import styles from "@/app/style/page.module.css";
-import { getApiUrl } from "@/lib/url";
+import {getApiUrl} from "@/lib/url";
 
 // ✅ Metadata generator
-export async function generateMetadata({ params }) {
-    const { slug } = await params;
+export async function generateMetadata({params}) {
+    const {slug} = await params;
 
     try {
         const apiUrl = getApiUrl('/api/saveToGitHub');
@@ -20,14 +20,14 @@ export async function generateMetadata({ params }) {
 
         if (!response.ok) {
             console.error('API Error:', response.status);
-            return { title: "Blog Post" };
+            return {title: "Blog Post"};
         }
 
         const blogData = await response.json();
         const post = blogData.find((post) => post.slug === slug);
 
         if (!post) {
-            return { title: "Post Not Found" };
+            return {title: "Post Not Found"};
         }
 
         return {
@@ -36,54 +36,76 @@ export async function generateMetadata({ params }) {
         };
     } catch (error) {
         console.error('Error generating metadata:', error);
-        return { title: "Blog Post" };
+        return {title: "Blog Post"};
     }
 }
 
 // ✅ Blog page component
-export default async function BlogPostView({ params }) {
-    const { slug } = await params;
+export default async function BlogPostView({params}) {
+    const {slug} = await params;
+
 
     try {
-        const apiUrl = getApiUrl('/api/saveToGitHub');
-        const response = await fetch(apiUrl, {
-            cache: 'no-store',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        });
+        const apiUrl = `${window.location.origin}/api/get_blog_data`;
+        console.log('API URL:', apiUrl);
 
-        console.log(apiUrl);
-        console.log(apiUrl);
+        const response = await fetch(apiUrl);
+        console.log('Response status:', response.status);
 
-        if (!response.ok) {
-            console.error('API Response not OK:', response.status);
-            notFound();
+        const text = await response.text();
+        console.log('Raw response:', text);
+
+        try {
+            const data = JSON.parse(text);
+            console.log('Parsed JSON:', data);
+        } catch (e) {
+            console.error('JSON parse error:', e);
         }
 
-        const blogData = await response.json();
-        const post = blogData.find((post) => post.slug === slug);
-
-        if (!post) {
-            notFound();
-        }
-
-        return (
-            <div className={styles.BlogPost}>
-                <h1>{post.title}</h1>
-                <div className={styles.postMeta}>
-                    <span>Published on: {new Date(post.date).toLocaleDateString()}</span>
-                </div>
-                <hr/>
-                <div className={styles.postContent}>
-                    {post.content.split('\n').map((paragraph, index) => (
-                        <p key={index}>{paragraph}</p>
-                    ))}
-                </div>
-            </div>
-        );
     } catch (error) {
-        console.error('Error fetching blog post:', error);
-        notFound();
+        console.error('Fetch error:', error);
     }
+
+    // try {
+    //     const apiUrl = getApiUrl('/api/saveToGitHub');
+    //     const response = await fetch(apiUrl, {
+    //         cache: 'no-store',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         }
+    //     });
+    //
+    //     console.log(apiUrl);
+    //     console.log(apiUrl);
+    //
+    //     if (!response.ok) {
+    //         console.error('API Response not OK:', response.status);
+    //         notFound();
+    //     }
+    //
+    //     const blogData = await response.json();
+    //     const post = blogData.find((post) => post.slug === slug);
+    //
+    //     if (!post) {
+    //         notFound();
+    //     }
+    //
+    //     return (
+    //         <div className={styles.BlogPost}>
+    //             <h1>{post.title}</h1>
+    //             <div className={styles.postMeta}>
+    //                 <span>Published on: {new Date(post.date).toLocaleDateString()}</span>
+    //             </div>
+    //             <hr/>
+    //             <div className={styles.postContent}>
+    //                 {post.content.split('\n').map((paragraph, index) => (
+    //                     <p key={index}>{paragraph}</p>
+    //                 ))}
+    //             </div>
+    //         </div>
+    //     );
+    // } catch (error) {
+    //     console.error('Error fetching blog post:', error);
+    //     notFound();
+    // }
 }
