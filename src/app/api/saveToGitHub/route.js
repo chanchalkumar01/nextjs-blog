@@ -180,7 +180,7 @@ export async function GET() {
         } else if (response.status === 404) {
             return NextResponse.json([]);
         } else {
-            throw new Error(`GitHub API error: ${response.status}`);
+            new Error(`GitHub API error: ${response.status}`);
         }
     } catch (error) {
         console.error('Error reading data from GitHub:', error);
