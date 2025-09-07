@@ -168,18 +168,20 @@ a.secondary {
 
 .navbar {
     align-self: center;
-    justify-content: center;
 
 }
 
 .navbarUl {
     display: flex;
     list-style: none;
+    align-self: center;
+    align-items: center;
 }
 
 .navbarUlLi {
-    margin: 0 20px;
+    margin: 0 20px !important;
     cursor: pointer;
+
 }
 
 .Blogs {
@@ -197,6 +199,13 @@ a.secondary {
 
 .BlogsDescription {
 
+}
+
+.addBlogBtn {
+    background: #00b5ff;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
 }
 
 

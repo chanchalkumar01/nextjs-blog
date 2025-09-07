@@ -25,6 +25,11 @@ export default function NavbarComponent() {
                         Contact
                     </Link>
                 </li>
+                <li className={`${styles.navbarUlLi} ${styles.addBlogBtn}`}>
+                    <Link key="blog-posts" href={`/add_blog`}>
+                        Add Blog
+                    </Link>
+                </li>
             </ul>
         </nav>
     </>

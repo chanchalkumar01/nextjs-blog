@@ -1,12 +1,11 @@
-import blogData from "../../../../data/blogs.json";
+import blogData from "../../../../../data/posts-data/postBlogs.json";
 import { notFound } from "next/navigation";
 import styles from "@/app/style/page.module.css";
-import NavbarComponent from "@/app/component/navbar/navbarComponent";
 
 // ✅ Metadata generator
-export function generateMetadata({ params }) {
-    const { slug } = params;
-    const post = blogData.posts.find((post) => post.slug === slug);
+export async function generateMetadata({params}) {
+    const {slug} = await params;
+    const post = blogData.find((post) => post.slug === slug);
 
     if (!post) {
         return {
@@ -21,10 +20,10 @@ export function generateMetadata({ params }) {
 }
 
 // ✅ Blog page
-export default function BlogPost({ params }) {
-    const { slug } = params;
+export default async function BlogPostView({params}) {
+    const {slug} = await params;
 
-    const post = blogData.posts.find((post) => post.slug === slug);
+    const post = blogData.find((post) => post.slug === slug);
 
     if (!post) {
         notFound();
@@ -32,10 +31,9 @@ export default function BlogPost({ params }) {
 
     return (
         <>
-            <NavbarComponent />
             <div className={styles.BlogPost}>
                 <h1>{post.title}</h1>
-                <hr />
+                <hr/>
                 <div>{post.content}</div>
             </div>
         </>
