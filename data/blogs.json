@@ -1,0 +1,34 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "slug": "nextjs-sikhne-ka-tarika",
+      "title": "Next.js Sikhne Ka Asaan Tarika",
+      "excerpt": "Learning Next.js involves understanding its core features and how it extends React for building production-ready web applications. Prerequisites: Strong understanding of JavaScript: Including ES6+ features, asynchronous programming, and module systems. Solid grasp of React: Familiarity with components, props, state, hooks, and the component lifecycle.",
+      "content": "Learning Next.js involves understanding its core features and how it extends React for building production-ready web applications. Prerequisites: Strong understanding of JavaScript: Including ES6+ features, asynchronous programming, and module systems. Solid grasp of React: Familiarity with components, props, state, hooks, and the component lifecycle.",
+      "author": "Rahul Sharma",
+      "date": "2024-01-15",
+      "image": "/images/nextjs-tutorial.jpg"
+    },
+    {
+      "id": 2,
+      "slug": "react-vs-nextjs",
+      "title": "React aur Next.js Mein Antar",
+      "excerpt": "React ek library hai jabki Next.js ek framework hai. Aaiye detail mein samjhte hain.",
+      "content": "React JavaScript ki ek library hai jisse hum user interfaces bana sakte hain...",
+      "author": "Priya Singh",
+      "date": "2024-01-10",
+      "image": "/images/react-vs-nextjs.jpg"
+    },
+    {
+      "id": 3,
+      "slug": "dynamic-routing",
+      "title": "Dynamic Routing Kaise Karein",
+      "excerpt": "Next.js mein dynamic routing ek bahut powerful feature hai. Aaiye seekhte hain.",
+      "content": "Dynamic routing se hum apne URLs ko dynamically generate kar sakte hain...",
+      "author": "Amit Kumar",
+      "date": "2024-01-05",
+      "image": "/images/dynamic-routing.jpg"
+    }
+  ]
+}
