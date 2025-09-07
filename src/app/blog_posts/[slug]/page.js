@@ -1,12 +1,12 @@
-import blogData from '../../../../data/blogs.json';
-import {notFound} from 'next/navigation';
+import blogData from "../../../../data/blogs.json";
+import { notFound } from "next/navigation";
 import styles from "@/app/style/page.module.css";
-import Navbar from "@/app/component/navbar/navbar";
+import NavbarComponent from "@/app/component/navbar/navbarComponent";
 
-
-export async function generateMetadata({params}) {
-    const {slug} = await params;
-    const post = blogData.posts.find(post => post.slug === slug);
+// ✅ Metadata generator
+export function generateMetadata({ params }) {
+    const { slug } = params;
+    const post = blogData.posts.find((post) => post.slug === slug);
 
     if (!post) {
         return {
@@ -20,28 +20,24 @@ export async function generateMetadata({params}) {
     };
 }
 
-export default async function BlogPost({params}) {
+// ✅ Blog page
+export default function BlogPost({ params }) {
+    const { slug } = params;
 
-    const {slug} = await params;
-
-    const post = blogData.posts.find(post => post.slug === slug);
+    const post = blogData.posts.find((post) => post.slug === slug);
 
     if (!post) {
         notFound();
     }
 
-
     return (
-        <div className={styles.page}>
-            <main className={styles.main}>
-                <Navbar></Navbar>
-
+        <>
+            <NavbarComponent />
+            <div className={styles.BlogPost}>
                 <h1>{post.title}</h1>
-                <hr/>
-                <div>
-                    {post.content}
-                </div>
-            </main>
-        </div>
+                <hr />
+                <div>{post.content}</div>
+            </div>
+        </>
     );
 }

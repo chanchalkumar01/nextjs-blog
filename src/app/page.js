@@ -1,14 +1,11 @@
-import styles from "./style/page.module.css";
-import Navbar from "@/app/component/navbar/navbar";
-import Home from "@/app/component/home/home";
+import HomeComponent from "@/app/component/home/homeComponent";
+import LoaderComponent from "@/app/component/loader/loaderComponent";
 
 export default function Main() {
     return (
-        <div className={styles.page}>
-            <main className={styles.main}>
-                <Navbar></Navbar>
-                <Home></Home>
-            </main>
-        </div>
+        <>
+
+            <HomeComponent></HomeComponent>
+        </>
     );
 }

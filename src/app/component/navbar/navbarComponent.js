@@ -1,7 +1,7 @@
 import styles from "@/app/style/page.module.css";
 import Link from "next/link";
 
-export default function Navbar() {
+export default function NavbarComponent() {
     return <>
         <nav className={styles.navbar}>
             <ul className={styles.navbarUl}>
