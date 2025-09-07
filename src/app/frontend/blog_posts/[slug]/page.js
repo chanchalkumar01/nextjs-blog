@@ -1,41 +1,100 @@
-import blogData from "../../../../../data/posts-data/postBlogs.json";
 import { notFound } from "next/navigation";
 import styles from "@/app/style/page.module.css";
 
 // ✅ Metadata generator
-export async function generateMetadata({params}) {
-    const {slug} = await params;
-    const post = blogData.find((post) => post.slug === slug);
+export async function generateMetadata({ params }) {
+    const { slug } = await params;
 
-    if (!post) {
+    try {
+        // API se data fetch karo
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/saveToGitHub`, {
+            cache: 'no-store' // Ensure fresh data
+        });
+
+        if (!response.ok) {
+            new Error('Failed to fetch blog data');
+        }
+
+        const blogData = await response.json();
+        const post = blogData.find((post) => post.slug === slug);
+
+        if (!post) {
+            return {
+                title: "Post Not Found",
+            };
+        }
+
         return {
-            title: "Post Not Found",
+            title: `${post.title} - Mera Blog`,
+            description: post.content.substring(0, 160), // First 160 characters as description
+        };
+    } catch (error) {
+        console.error('Error generating metadata:', error);
+        return {
+            title: "Blog Post",
         };
     }
-
-    return {
-        title: `${post.title} - Mera Blog`,
-        description: post.excerpt,
-    };
 }
 
-// ✅ Blog page
-export default async function BlogPostView({params}) {
-    const {slug} = await params;
+// ✅ Generate static params for SSG
+export async function generateStaticParams() {
+    try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/saveToGitHub`, {
+            next: { revalidate: 3600 } // Revalidate every hour
+        });
 
-    const post = blogData.find((post) => post.slug === slug);
+        if (!response.ok) {
+            return [];
+        }
 
-    if (!post) {
-        notFound();
+        const blogData = await response.json();
+
+        return blogData.map((post) => ({
+            slug: post.slug,
+        }));
+    } catch (error) {
+        console.error('Error generating static params:', error);
+        return [];
     }
+}
 
-    return (
-        <>
+// ✅ Blog page component
+export default async function BlogPostView({ params }) {
+    const { slug } = await params;
+
+    try {
+        // API se data fetch karo
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/saveToGitHub`, {
+            cache: 'no-store' // Ensure fresh data for each request
+        });
+
+        if (!response.ok) {
+            new Error('Failed to fetch blog data');
+        }
+
+        const blogData = await response.json();
+        const post = blogData.find((post) => post.slug === slug);
+
+        if (!post) {
+            notFound();
+        }
+
+        return (
             <div className={styles.BlogPost}>
                 <h1>{post.title}</h1>
+                <div className={styles.postMeta}>
+                    <span>Published on: {new Date(post.date).toLocaleDateString()}</span>
+                </div>
                 <hr/>
-                <div>{post.content}</div>
+                <div className={styles.postContent}>
+                    {post.content.split('\n').map((paragraph, index) => (
+                        <p key={index}>{paragraph}</p>
+                    ))}
+                </div>
             </div>
-        </>
-    );
+        );
+    } catch (error) {
+        console.error('Error fetching blog post:', error);
+        notFound();
+    }
 }
