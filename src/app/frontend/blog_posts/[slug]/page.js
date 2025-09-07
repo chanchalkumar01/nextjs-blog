@@ -64,9 +64,11 @@ export default async function BlogPostView({ params }) {
 
     try {
         // API se data fetch karo
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/saveToGitHub`, {
-            cache: 'no-store' // Ensure fresh data for each request
-        });
+        const response = await fetch('/api/saveToGitHub');
+
+        // const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/saveToGitHub`, {
+        //     cache: 'no-store' // Ensure fresh data for each request
+        // });
 
         if (!response.ok) {
             new Error('Failed to fetch blog data');
