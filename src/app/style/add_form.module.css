@@ -1,4 +1,10 @@
 
+.addFrom {
+    width: 100%;
+
+    place-items: center;
+}
+
 .fromLayout {
     background: white;
     border-radius: 10px;

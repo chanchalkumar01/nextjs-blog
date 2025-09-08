@@ -49,28 +49,30 @@ export default function AddBlogPostComponent() {
 
     return (
         <>
-            <form onSubmit={handleSubmit} className={styles.fromLayout}>
-                <div className={styles.formGroup}>
-                    <label className={styles.formLabel}>Title:</label>
-                    <input className={styles.formInput}
-                           type="text"
-                           value={formTitle}
-                           onChange={(e) => setTitle(e.target.value)}
-                           required
-                    />
-                </div>
-                <div className={styles.formGroup}>
-                    <label className={styles.formLabel}>Write Your Blog Post Content:</label>
-                    <textarea
-                        className={styles.formTextarea}
-                        rows={6}
-                        value={formContent}
-                        onChange={(e) => setContent(e.target.value)}
-                        required
-                    />
-                </div>
-                <button className={styles.formSubmit} type="submit">Add Post</button>
-            </form>
+            <div className={styles.addFrom}>
+                <form onSubmit={handleSubmit} className={styles.fromLayout}>
+                    <div className={styles.formGroup}>
+                        <label className={styles.formLabel}>Title:</label>
+                        <input className={styles.formInput}
+                               type="text"
+                               value={formTitle}
+                               onChange={(e) => setTitle(e.target.value)}
+                               required
+                        />
+                    </div>
+                    <div className={styles.formGroup}>
+                        <label className={styles.formLabel}>Write Your Blog Post Content:</label>
+                        <textarea
+                            className={styles.formTextarea}
+                            rows={6}
+                            value={formContent}
+                            onChange={(e) => setContent(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <button className={styles.formSubmit} type="submit">Add Post</button>
+                </form>
+            </div>
         </>
     );
 }
