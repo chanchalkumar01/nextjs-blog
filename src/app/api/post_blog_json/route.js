@@ -2,6 +2,9 @@ import {NextResponse} from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
+// Comment BY chanchal main lap
+
+
 export async function POST(request) {
     try {
         const newBlogPost = await request.json();
