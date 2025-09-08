@@ -1,6 +1,5 @@
 import styles from "@/app/style/page.module.css";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function HomeComponent() {
     return <>
@@ -20,13 +19,9 @@ export default function HomeComponent() {
         <div className={styles.Blogs}>
             <div className={styles.BlogsItem}>
                 <div className={styles.BlogsTitle}>
-                    <Link
-                        key="how-to-learn-nextjs"
-                        href={`/blog_posts/how-to-learn-nextjs`}
-                        className="p-4 border rounded-lg hover:bg-gray-50 transition-colors"
-                    >
-                        <h3>1. How to learn Next Js?</h3>
-                    </Link>
+
+                    <h3>1. How to learn Next Js?</h3>
+
                 </div>
                 <div className={styles.BlogsDescription}>
                     Learning Next.js involves understanding its core features and how it extends React for
