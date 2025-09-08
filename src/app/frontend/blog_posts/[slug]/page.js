@@ -7,7 +7,7 @@ export async function generateMetadata({ params }) {
     const { slug } = await  params;
 
     try {
-        const apiUrl = getApiUrl('/api/saveToGitHub');
+        const apiUrl = getApiUrl('/api/savePostBlogs');
         const response = await fetch(apiUrl, {
             cache: 'no-store',
             headers: { 'Content-Type': 'application/json' }
@@ -41,7 +41,7 @@ export default async function BlogPostView({ params }) {
     const { slug } = await params;
 
     try {
-        const apiUrl = getApiUrl('/api/saveToGitHub');
+        const apiUrl = getApiUrl('/api/savePostBlogs');
         const response = await fetch(apiUrl, {
             cache: 'no-store',
             headers: { 'Content-Type': 'application/json' }

@@ -14,7 +14,7 @@ export default function BlogPage() {
         const fetchBlogData = async () => {
             try {
                 setLoading(true);
-                const response = await fetch('/api/saveToGitHub');
+                const response = await fetch('/api/savePostBlogs');
 
                 if (!response.ok) {
                     console.log('Fetch issue Not load data by this api :', response)

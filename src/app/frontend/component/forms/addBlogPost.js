@@ -31,7 +31,7 @@ export default function AddBlogPostComponent() {
 
         try {
 
-            await fetch('/api/saveToGitHub', {
+            await fetch('/api/savePostBlogs', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
