@@ -2,7 +2,7 @@
 
 import styles from "@/app/style/page.module.css";
 import Link from "next/link";
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 
 export default function BlogPage() {
     const [blogData, setBlogData] = useState([]);
@@ -17,7 +17,7 @@ export default function BlogPage() {
                 const response = await fetch('/api/saveToGitHub');
 
                 if (!response.ok) {
-                    new Error('Failed to fetch blog data');
+                    console.log('Fetch issue Not load data by this api :', response)
                 }
 
                 const data = await response.json();
@@ -68,7 +68,7 @@ export default function BlogPage() {
                                     <h3>{(index + 1)}. {post.title}</h3>
                                 </div>
                                 <div className={styles.BlogsDescription}>
-                                    {post.content.substring(0, 100)}...
+                                    {post.content.substring(0, 100)}
                                 </div>
                                 <div className={styles.BlogsMeta}>
                                     <small>Posted on: {new Date(post.date).toLocaleDateString()}</small>
