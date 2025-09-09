@@ -155,7 +155,7 @@ export default function BlogPageClient() {
                                     <h3>{index + 1}. {post.title}</h3>
                                 </div>
                                 <div className={styles.BlogsDescription}>
-                                    {post.content.substring(0, 100)}
+                                    {post.content.substring(0, 300)}
                                 </div>
                                 <div className={styles.BlogsMeta}>
                                     <small>Posted on: {new Date(post.date).toLocaleDateString()}</small>
