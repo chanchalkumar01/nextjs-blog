@@ -10,5 +10,6 @@ export function getBaseUrl() {
 
 export function getApiUrl(path = "") {
     const baseUrl = getBaseUrl();
+    // return `${baseUrl}${path}`;
     return `https://nextjs-blog-chanchalkumar01s-projects.vercel.app${path}`;
 }
