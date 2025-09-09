@@ -1,6 +1,6 @@
 import styles from "@/app/style/page.module.css";
 import Image from "next/image";
-import BlogPageClient from "@/app/frontend/blog_posts/page";
+import BlogListsComponent from "@/app/frontend/component/blog_lists/blogListsComponent";
 
 export default function HomeComponent() {
     return <>
@@ -18,7 +18,7 @@ export default function HomeComponent() {
         <h2> Blog Posts</h2>
         <hr/>
 
-        <BlogPageClient latestCount={5}/>
+        <BlogListsComponent latestCount={5}/>
 
     </>
 }
